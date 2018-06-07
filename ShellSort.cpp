@@ -1,28 +1,27 @@
 #include<iostream>
 using namespace std;
 
-void Shell_sort(int a[],size_t n)
+void Shell_sort(int *arr, int n)
 {
-    int i,j,k,group;
-    for (group = n/2; group > 0; group /= 2)//增量序列为n/2,n/4....直到1
-    {
-        for (i = 0; i < group; ++i)
-        {
-            for (j = i+group; j < n; j += group)
-            {
-                //对每个分组进行插入排序
-                if (a[j - group] > a[j])
-                {  
-                    int temp = a[j];
-                    k = j - group;
-                    while (k>=0 && a[k]>temp)
-                    {
-                        a[k+group] = a[k];
-                        k -= group;
-                    }
-                    a[k] = temp;
-                }
-            }
-        }
+  int i, j, gap;
+  int tmp;
+  for(gap = n/2; gap > 0; gap /= 2){
+    for(i = gap; i < n; ++i){
+      tmp = arr[i];
+      for(j = i - gap; j >= 0 && arr[j] > tmp; j -= gap){
+        arr[j+gap] = arr[j];
+      }
+      arr[j+gap] = tmp;
     }
+  }
+}
+
+int main()
+{
+     int data[]={5,1,19,22,3,1,23,6};    //输入待排序数组
+     Shell_sort(data,8);
+     for(int i = 0; i < 8; i++)
+        cout<<data[i]<<" ";
+    cout<<"\n";
+		return 0;
 }

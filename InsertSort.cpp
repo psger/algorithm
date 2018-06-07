@@ -20,7 +20,7 @@ int main()
 {
      int data[]={5,1,19,22,3,1,23,6};    //输入待排序数组
      InsertSort(data,8);
-    for(int i=0;i<8;i++)
+     for(int i = 0; i < 8; i++)
         cout<<data[i]<<" ";
     cout<<"\n";
 		return 0;
