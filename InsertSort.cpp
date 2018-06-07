@@ -1,17 +1,17 @@
 #include<iostream>
 using namespace std;
 
-void InsertSort(int array[], int n){
+void InsertSort(int array[], int n)
+{
   int i, j;
   for (i = 1; i < n; i++){
     int temp = array[i];
-    if (array[i] < array[i-1])
-    {
       for (j = i - 1; j >= 0 && array[j] > temp; j--){
         array[j + 1] = array[j];
-        array[j] = temp;
-      }
+
     }
+    cout<<"*"<<j<<" ";
+    array[j+1] = temp;
   }
 }
 
