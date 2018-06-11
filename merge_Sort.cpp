@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+//归并排序
 void merge(int arr[], int L, int M, int R)
 {
   int LEFT_SIZE = M - L;

@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+//希尔排序
 void Shell_sort(int *arr, int n)
 {
   int i, j, gap;
@@ -25,4 +25,3 @@ int main()
     cout<<"\n";
 		return 0;
 }
-   

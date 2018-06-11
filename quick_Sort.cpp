@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-
+//快速排序
 static void swap(int *a, int *b)//a,b都是地址
 {
   int tmp;

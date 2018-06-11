@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-
+//冒泡排序
 void BulleSort(int* pData, int Count)
 {
     // int iTemp=0;
