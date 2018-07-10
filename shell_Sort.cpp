@@ -24,4 +24,7 @@ int main()
         cout<<data[i]<<" ";
     cout<<"\n";
 		return 0;
+
 }
+//你好
+//test
