@@ -8,7 +8,6 @@ void InsertSort(int array[], int n)
     int temp = array[i];
       for (j = i - 1; j >= 0 && array[j] > temp; j--){
         array[j + 1] = array[j];
-
     }
     cout<<"*"<<j<<" ";
     array[j+1] = temp;
