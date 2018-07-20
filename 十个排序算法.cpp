@@ -84,3 +84,57 @@ void shellSort(int *array, int n){
     }
   }
 }
+
+*******************************************************************
+//归并排序
+void merge(int arr[], int L, int M, int R){
+  int LEFT_SIZE = M - L + 1;
+  int RIGHT_SIZE = R - M;
+  int left[LEFT_SIZE];
+  int right[RIGHT_SIZE];
+
+  for(int i = L; i <= M; i++){//拆分的时候M是包含在右边的
+    left[i - L] = arr[i];
+  }
+
+  for(int i = M + 1; i <= R; i++){
+    right[i - M - 1] = arr[i];
+  }
+
+  //将两个数组合并为一个有序的数组
+  i = 0; j = 0; k = 0;
+  while(i < LEFT_SIZE && j < RIGHT_SIZE){
+    if(left[i] < right[j]){
+      arr[k] = left[i];
+      i++;
+      k++
+    }else{
+      arr[k] = right[j];
+      j++;
+      k++;
+    }
+  }
+
+  while(i < LEFT_SIZE){
+    arr[k] = left[i];
+    i++;
+    k++;
+  }
+
+  while(j < RIGHT_SIZE){
+    arr[k] = right[j];
+    i++;
+    k++;
+  }
+}
+
+//分治法
+void merge_sort(int arr[], int L, int R){
+  if(L == R)//如果只有一个元素
+  return;
+
+  int M = (L + R) / 2;//为什么要加L,不直接R/2 ? 右边的L是从M+1开始的，并不是0
+  merge_sort(arr, L, M);//这个时候M是包含在左边的
+  merge_sort(arr, M + 1, R);
+  merge(arr, L, M, R);//注意中点边界M 
+}
