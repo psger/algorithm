@@ -1,7 +1,9 @@
 //1.冒泡排序
+//两两比较放到最后，每一趟都会选出一个最大或者最小
+//O(n^2)
 void bubbleSort(int array[], int n)
 {
-  for(int i = 0; i < n - 1; i++){
+  for(int i = 0; i < n - 1; i++){//i是比较的次数，一共要比较n-1次,这里的i从0开始，所以要<n-1
     for(int j = 0; j < n - 1 - i; j++){
       if(array[j] > array[j + 1])
       swap(array[j], array[j + 1]);
@@ -13,18 +15,20 @@ function bubbleSort2(int array[], int n)
 {
   int i, j, change = 0;
 
-  for(i = 0; i < n - 1 && change != 0; i++){
-   change = 0;//这里置0是为了每一次比较，只要有一次没有交换就有序了
+  for(i = 0; i < n - 1 && change != 0; i++){//如果没有交换(change=0)就终止循环
+   change = 0;//在n-1次比较中，只要有一次没有交换就有序了
     for(j = 0; j < n - 1 - i; j++){
       if(array[j] > array[j + 1]){
         swap(array[j] > array[j++]);
-        change = 1;
+        change = 1;//表示有交换
       }
     }
   }
 }
-
+********************************************************************************
 //2.选择排序
+//从后面的选出最小的放到前面
+//O(n^2)
 void selectionSort(int array[], int n)
 {
   int minIndex = 0;
@@ -39,8 +43,10 @@ void selectionSort(int array[], int n)
     swap(array[minIndex], array[i]);
   }
 }
-
+********************************************************************************
 //插入排序
+//把后面的按大小插入到前面
+//O(n^2)
 void insertSort(int array[], int n)
 {
   int i, j, tmp;
@@ -70,8 +76,9 @@ void insertSort(int array[], int n){
   }
 }
 
-
+********************************************************************************
 //希尔排序
+//基于插入排序，平均O(n^1.3)
 void shellSort(int *array, int n){
   int i, j, gap;
   for(gap = n / 2; gap > 0; gap /= 2){
@@ -85,8 +92,12 @@ void shellSort(int *array, int n){
   }
 }
 
-*******************************************************************
+********************************************************************************
 //归并排序
+//用到分治法的思想，将数组不断的分下去，分到最后只剩下一个元素就是有序的了，再来合并成有序的数组
+//分治法的基本思想是：将原问题分解为若干个规模更小但结构与原问题相似的子问题。递归地解这些子问题，
+//然后将这些子问题的解组合为原问题的解。
+//O(nlogn)
 void merge(int arr[], int L, int M, int R){
   int LEFT_SIZE = M - L + 1;
   int RIGHT_SIZE = R - M;
@@ -136,5 +147,44 @@ void merge_sort(int arr[], int L, int R){
   int M = (L + R) / 2;//为什么要加L,不直接R/2 ? 右边的L是从M+1开始的，并不是0
   merge_sort(arr, L, M);//这个时候M是包含在左边的
   merge_sort(arr, M + 1, R);
-  merge(arr, L, M, R);//注意中点边界M 
+  merge(arr, L, M, R);//注意中点边界M
+}
+********************************************************************************
+
+//快速排序
+
+//选一个基数，分成两个数组
+int partition(int arr[], int left, int right)
+{
+  int i = left;//定义左右边界
+  int j = right;
+
+  int pivot = arr[left];//将左边的选为基数
+
+  while(i < j){
+    while(i < j && arr[i] < pivot){//从左到右的数小于基数 i就向右移
+      i++;
+    }
+
+    while(j > i && arr[j] > pivot){////从右到左的数小于基数 i就向左移
+      j--;
+    }
+    //不符合条件就交换
+    swap(arr[i], arr[j]);
+  }
+  //循环完了之后交换基数于i的位置
+  swap(arr[i], pivot);
+  return i;//返回i的下标
+}
+
+//分治法，递归去分解每一个数组
+void quick_sort(int arr[], int left, int right)
+{
+    int pivot_pos;
+
+    if(left < right){
+      pivot_pos = partition(arr, left, right);
+      quick_sort(arr, left, pivot_pos);
+      quick_sort(arr, pivot_pos + 1, right);
+    }
 }

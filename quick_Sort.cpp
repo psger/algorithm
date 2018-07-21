@@ -2,6 +2,7 @@
 using namespace std;
 
 //快速排序
+//快排也是采用分治法
 static void swap(int *a, int *b)//a,b都是地址
 {
   int tmp;
@@ -15,18 +16,20 @@ static int partition(int arr[], int left, int right)
   int i = left;
   int j = right;
 
-  int pivot = arr[left];
+  int pivot = arr[left];//将左边的选为基数
 
   while(i < j){
+
     while(i < j && arr[j] >= pivot){
-      --j;
+      j--;
     }
     while(i < j && arr[i] <= pivot){
-      ++i;
-    }//当i=j后 i还向前多移动一位
+      i++;
+    }
     if(i < j){
       swap(&arr[i], &arr[j]);//&符号取地址
     }
+
   }
   swap(&arr[left], &arr[i]);
   return i;//返回下标
@@ -39,8 +42,8 @@ static void quick_sort(int arr[], int left, int right)
 
   if(left < right){
     pivot_pos = partition(arr, left, right);//交换后的下标
-    quick_sort(arr, left, pivot_pos - 1);//前面的i多向前跑了一位
-    quick_sort(arr, pivot_pos + 1, right);//原本是从pivot_pos开始,但是上面-1了,下面就要+1
+    quick_sort(arr, left, pivot_pos);
+    quick_sort(arr, pivot_pos + 1, right);
   }
 }
 
