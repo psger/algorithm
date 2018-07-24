@@ -161,7 +161,7 @@ int partition(int arr[], int left, int right)
 
   int pivot = arr[left];//将左边的选为基数
 
-  while(i < j){
+  while(i < j){；
     while(i < j && arr[i] < pivot){//从左到右的数小于基数 i就向右移
       i++;
     }
@@ -187,4 +187,27 @@ void quick_sort(int arr[], int left, int right)
       quick_sort(arr, left, pivot_pos);
       quick_sort(arr, pivot_pos + 1, right);
     }
+}
+
+********************************************************************************
+//堆排序
+//先建立大(小)顶堆，然后将顶元素与尾元素交换，重新构建大(小)顶堆
+void HeapAdjust(int arr[], int start, int end){
+  int tmp = arr[start];
+
+  for(int i = 2 * start + 1; i <= end; i++){
+    if(i < end && arr[i] < arr[i + 1]){
+      i++;
+    }
+
+    if(tmp > arr[i])
+    {
+      break;
+    }
+
+    arr[start] = arr[i];
+    start = i;
+  }
+
+  arr[start] = tmp;
 }

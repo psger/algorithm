@@ -26,7 +26,7 @@ void merge(int arr[], int L, int M, int R)
 
   //将两个数组合并
   i = 0; j = 0; k = L;
-  while (i < LEFT_SIZE && j < RIGHT_SIZE) {
+  while (i < LEFT_SIZE && j < RIGHT_SIZE) {//三个指针i,j是两个待合并的数组，k是合并的
     if(left[i] < right[j]){
       arr[k] = left[i];
       i++;

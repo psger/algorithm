@@ -1,16 +1,10 @@
 #include <iostream>
 
-int binarySearch(int array[], int n, int target){
-
-}
-
-
-
 int BinarySearch(int array[], int n, int value){
   int left = 0;
   int right = n - 1;
 
-  while(left <= right){//注意此处的边界 
+  while(left <= right){//注意此处的边界
     int middle = left + ((right - left) >> 1);//>> 1(二进制右移动一位相当于/2) 或者(right-left) / 2 + left 不会溢出
     if(array[middle] > value)
       right = middle - 1;

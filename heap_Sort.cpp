@@ -31,7 +31,7 @@ void HeapSort(ElemType A[], int n) {
     }
     //进行排序
     for (int i = n - 1; i > 0; --i) {
-        //最后一个元素和第一个元素进行比较
+        //最后一个元素和第一个元素进行交换 就是将大的元素放到数组后面然后继续调整为最大堆 
         ElemType temp = A[i];
         A[i] = A[0];
         A[0] = temp;

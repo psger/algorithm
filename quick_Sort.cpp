@@ -38,7 +38,7 @@ static int partition(int arr[], int left, int right)
 
 static void quick_sort(int arr[], int left, int right)
 {
-  int pivot_pos;
+  int pivot_pos;//将数组分开处的下标
 
   if(left < right){
     pivot_pos = partition(arr, left, right);//交换后的下标
