@@ -7,3 +7,4 @@ while(($file = readdir($handle)) !== false){
     echo $file."\n";
 }
 iss55
+iss55 double
