@@ -11,7 +11,7 @@ static void swap(int *a, int *b)//a,b都是地址
   *b = tmp;
 }
 
-static int partition(int arr[], int left, int right)
+static int partition(int arr[], int left, int right)//将大于基数的放在基数右边，将小于基数的放在基数左边
 {
   int i = left;
   int j = right;
