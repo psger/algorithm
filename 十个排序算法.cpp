@@ -82,9 +82,9 @@ void insertSort(int array[], int n){
 void shellSort(int *array, int n){
   int i, j, gap;
   for(gap = n / 2; gap > 0; gap /= 2){
-    for(int i = 0; i < n; i++){
+    for(int i = gap; i < n; i++){
       int tmp = array[i];
-      for(int j = i + gap; j >= 0 && array[j] > tmp; j--){
+      for(int j = i + gap; j >= 0 && array[j] > tmp; j -= gap){
         array[j + gap] = array[j];
       }
       array[j + gap] = tmp;
